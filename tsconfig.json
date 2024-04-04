@@ -3,6 +3,11 @@
   "compilerOptions": {},
   "include": [
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+      "**/*",
+    "../../../../.sfdx/typings/lwc/**/*.d.ts",
+    "../../../../*.d.ts",
+    "./src/index.d.ts"
+
   ]
 }

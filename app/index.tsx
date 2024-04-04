@@ -14,9 +14,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import Logo from "../assets/Group 427319746.png";
-import EmailIcon from "../assets/EmailIcon.png";
-import PasswordIcon from "../assets/PasswordIcon.png";
+// import Logo from "../assets/Group 427319746.png";
+const EmailIcon = require("../assets/EmailIcon.png");
+const PasswordIcon = require("../assets/PasswordIcon.png");
+const Logo = require("../assets/Group 427319746.png");
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -42,24 +43,13 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
-  // const [fontsLoaded] = useFonts({
-  //   "Satoshi": require("./assets/fonts/Satoshi-Regular.otf"),
-  // });
-
-  const onSubmit = (data) => {
-    // Simulate form submission
-    // router.navigate("/user");
-    console.log("Submitted Data:", data);
-    setSubmittedData(data);
-  };
 
   const [fontsLoaded, fontError] = useFonts({
-    "Satoshi": require("../assets/fonts/Satoshi-Regular.otf"),
+    Satoshi: require("../assets/fonts/Satoshi-Regular.otf"),
     "Satoshi-bold": require("../assets/fonts/Satoshi-Bold.otf"),
     "Satoshi-medium": require("../assets/fonts/Satoshi-Medium.otf"),
   });
 
-  
   const handleSubmit = () => {
     if (isFormValid) {
       // Form is valid, perform the submission logic
@@ -72,15 +62,12 @@ export default function App() {
   };
 
   useEffect(() => {
-    // Trigger form validation when name,
-    // email, or password changes
     validateForm();
   }, [email, password]);
 
   const validateForm = () => {
     let errors: Error = {};
 
-    // Validate email field
     if (!email) {
       errors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -160,7 +147,6 @@ export default function App() {
                 height: 200,
               }}
               label={"Email Address"}
-              togglePassword={show}
               value={email}
               containerStyles={{
                 borderColor: "#EFF2F7",
@@ -233,6 +219,7 @@ export default function App() {
                   source={PasswordIcon}
                 />
               }
+              // rightComponent={<Text>Forgot?</Text>}
             />
           </View>
 
@@ -247,7 +234,7 @@ export default function App() {
             disabled={!isFormValid}
             onPress={handleSubmit}>
             <View>
-              <Text style={styles.buttonText}>Submit</Text>
+              <Text style={styles.buttonText}>Login</Text>
             </View>
           </TouchableOpacity>
           {/* <View><Button title="Button"></View> */}
